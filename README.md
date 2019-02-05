@@ -13,24 +13,26 @@ v1.
 
 #### getCurrentWeatherCity (Получить информацию о текущей погоде, входящий параметр ИдГорода,ТипТемпературы)
  ``` 
-      @param Int IdCity      
+      @param Int $IdCity      
       @param string $units
  ```  
  //Расписать ответ
  
  #### getHistorytWeatherCity (Историю погоды на конретную дату и время)
   ``` 
-      @param Int IdCity      
+      @param Int $IdCity      
       @param date $date
       @param time $time
       @param string $units
  ```  
  #### getForecastWeatherCity (Прогноз на N дней вперед)
   ``` 
-      @param Int IdCity      
+      @param Int $IdCity      
       @param Int $CountDay
       @param string $units
  ```  
-Прогноз на будущие
 
-Определения местоположения
+
+Определения местоположения - отдельным сервисом?
+Так же может лучше передавать городи и тип температуры запросов для настройки будущих ответов этому пользователю.(?)
+Кеш добавить в запрос или тоже  вынести в настройки пользователя.(?)
