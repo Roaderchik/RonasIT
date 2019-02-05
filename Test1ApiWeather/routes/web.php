@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('getListCountry/{CountrySearch?}', function ($CountrySearch = Null) {
+    return 'CountrySearch '.$CountrySearch;
+});
