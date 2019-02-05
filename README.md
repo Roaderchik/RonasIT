@@ -129,3 +129,11 @@ v1.1.1
 *   `id` City ID
 *   `name` City name
 *   `cod` Internal parameter
+
+
+
+
+Для ларавел логичней использовать Люмен https://lumen.laravel.com/
+Для Node.js тот же экспресс
+
+но выберу полный ларавел, будет время перепишу на Люмен и Node.js
