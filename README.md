@@ -13,6 +13,12 @@ v1.1
 из JSON файла получить список стран
 из JSON файла получить список стран и первым буквам
 
+Если будет время реализовать через ISO
+поискать доступ к ИСО 3166 на русском- список стран с кодировкой. 
+типа https://www.iso.org/obp/ui/#search только API
+вот отличный вариант https://restcountries.eu/#api-endpoints-all
+
+
 #### getListCity (Список городов, входящий параметр Страна, Начальные буквы города)
  ``` 
     @param string $country
@@ -52,6 +58,8 @@ v1.1
       @param string $units
  ```
  запрос к API  https://api.openweathermap.org/data/2.5/weather?lat=55&lon=73.4&appid=a4cfee3044d5428481b8297bc76d67f2&lang=RU
+ Разобраться в получения ГеоКоординат.
+ 
 
 Расписать ответы в соотвествии с mockup иконки и т.п.
 
