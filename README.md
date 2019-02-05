@@ -5,7 +5,7 @@
 Написать Апи-шлюз к сервису погода основываясь на API https://openweathermap.org/api
 Обращаться будем к русской версии с параметром lang=RU 
 RestAPI c запросами:
-v1.1
+v1.1.1
 #### getListCountry (Список стран, входящий параметр Начальные буквы страны)
  ```    
     * @param string $СountrySearch
@@ -18,6 +18,15 @@ v1.1
 типа https://www.iso.org/obp/ui/#search только API
 вот отличный вариант https://restcountries.eu/#api-endpoints-all
 
+### Response JSON
+    ```
+     {
+        "country_code": "RU",
+        "name": "Russian",
+        "name_local": "Россия"    
+    }
+    ```
+
 
 #### getListCity (Список городов, входящий параметр Страна, Начальные буквы города)
  ``` 
@@ -27,8 +36,19 @@ v1.1
 из JSON файла получить список городов, по стране
 из JSON файла получить список городов, по стране и первым буквам
 
-//Расписать JSON ответ
-
+### Response JSON
+    ```
+     {
+        "id": 1496153,
+        "name": "Omsk",
+        "name_local": "Омск",
+        "country": "RU",
+        "coord": {
+          "lon": 73.400002,
+          "lat": 55
+        }
+    }
+    ```
 #### getCurrentWeatherCity (Получить информацию о текущей погоде, входящий параметр ИдГорода,ТипТемпературы)
  ``` 
       @param Int $IdCity      
@@ -44,12 +64,7 @@ v1.1
       @param time $time
       @param string $units
  ```  
- #### getForecastWeatherCity (Прогноз на N дней вперед)
-  ``` 
-      @param Int $IdCity      
-      @param Int $CountDay
-      @param string $units
- ```  
+ 
  
  #### getCurrentWeatherGeoCoor (Получить информацию о текущей погоде, входящий параметр Долгота , Широта,ТипТемпературы)
  ``` 
@@ -58,12 +73,17 @@ v1.1
       @param string $units
  ```
  запрос к API  https://api.openweathermap.org/data/2.5/weather?lat=55&lon=73.4&appid=a4cfee3044d5428481b8297bc76d67f2&lang=RU&units=metric
- Разобраться в получения ГеоКоординат.
+Разобраться в получения ГеоКоординат.
+Определения местоположения - отдельным сервисом(?) 
  
-
+ Для данного mockup-a это избыточный функционал(не реализуем?):
+ #### getForecastWeatherCity (Прогноз на N дней вперед)
+  ``` 
+      @param Int $IdCity      
+      @param Int $CountDay
+      @param string $units
+ ```  
 Расписать ответы в соотвествии с mockup иконки и т.п.
-
-Определения местоположения - отдельным сервисом(?)
 
 Так же может лучше передавать координты, город и тип температуры(&units=imperial/metric), язык ответа(&lang=RU/US) запросов для настройки будущих ответов этому пользователю.(?)
 
