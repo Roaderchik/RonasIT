@@ -131,7 +131,7 @@ v1.1.1
 *   `cod` Internal parameter
 
 
-
+Адрес шлюза http://ronasit.nodejs.website/
 
 Для ларавел логичней использовать Люмен https://lumen.laravel.com/
 Для Node.js тот же экспресс
