@@ -40,6 +40,7 @@ Route::get('getListCountry/{CountrySearch?}', function ($CountrySearch = Null) {
 
 Route::get('getListCity/{CountryCode}/{CitySearch?}', function ($CountryCode,$CitySearch = Null) 
 {   
+//вот это вообще конечно жесть, в идеале передеалть на отдельный микросервис и получать оттуда уже фильтрованные данные
 
 	$json = json_decode(file_get_contents('http://ronasit.nodejs.website/files/city.list.json'), true);
 
