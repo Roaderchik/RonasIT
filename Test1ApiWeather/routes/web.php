@@ -40,8 +40,7 @@ Route::get('getListCountry/{CountrySearch?}', function ($CountrySearch = Null) {
 
 Route::get('getListCity/{CountryCode}/{CitySearch?}', function ($CountryCode,$CitySearch = Null) 
 {   
-//вот это вообще конечно жесть, в идеале передеалть на отдельный микросервис и получать оттуда уже фильтрованные данные
-
+//вот это вообще конечно жесть, в идеале передеалать на отдельный микросервис и получать оттуда уже фильтрованные данные
 	$json = json_decode(file_get_contents('http://ronasit.nodejs.website/files/city.list.json'), true);
 
 	$response=[];
@@ -55,9 +54,21 @@ Route::get('getListCity/{CountryCode}/{CitySearch?}', function ($CountryCode,$Ci
 					$response[]=$search;
 				}
 			}
-		}
-		//$response[]=array('country_code' => $search['alpha2Code'], 'name' => $search['name'], 'country'=> $search['nativeName']);         
+		}		
     }
 	 
 	return Response::json($response);
 });
+
+
+Route::get('getCurrentWeatherCity/{IdCity}/{Units?}', function ($IdCity,$Units = 'metric') 
+{   
+//getCurrentWeatherCity/1496153/
+//appid переделать на получение из конфига
+$appid='a4cfee3044d5428481b8297bc76d67f2';
+
+	$json = json_decode(file_get_contents('https://api.openweathermap.org/data/2.5/weather?id='.$IdCity.'&appid='.$appid.'&lang=RU&units='.$Units), true);
+	return $json;
+	
+})->where(['IdCity' => '[0-9]+']);
+
