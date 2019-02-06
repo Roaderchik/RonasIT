@@ -26,7 +26,11 @@ v1.1.1
         "name_local": "Россия"    
     }
     ```
+Запрос на все страна http://ronasit.nodejs.website/getListCountry/
 
+Запросы с поиском http://ronasit.nodejs.website/getListCountry/Rus
+
+--Доделать вывод только нужных полей.
 
 #### getListCity (Список городов, входящий параметр Страна, Начальные буквы города)
  ``` 
