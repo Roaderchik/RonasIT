@@ -10,13 +10,7 @@ v1.1.1
  ```    
     * @param string $СountrySearch
  ```   
-из JSON файла получить список стран
-из JSON файла получить список стран и первым буквам
-
-Если будет время реализовать через ISO
-поискать доступ к ИСО 3166 на русском- список стран с кодировкой. 
-типа https://www.iso.org/obp/ui/#search только API
-вот отличный вариант https://restcountries.eu/#api-endpoints-all
+Для поиска стран используем API https://restcountries.eu/#api-endpoints-all
 
 ##### Response JSON
     ```
@@ -26,15 +20,15 @@ v1.1.1
         "name_local": "Россия"    
     }
     ```
+    
 Запрос на все страна http://ronasit.nodejs.website/getListCountry/
 
 Запросы с поиском http://ronasit.nodejs.website/getListCountry/Rus
 
---Доделать вывод только нужных полей.
 
 #### getListCity (Список городов, входящий параметр Страна, Начальные буквы города)
  ``` 
-    @param string $country
+    @param string $CountryCode
     * @param string $CitySearch
  ```   
 из JSON файла получить список городов, по стране
