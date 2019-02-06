@@ -37,3 +37,26 @@ Route::get('getListCountry/{CountrySearch?}', function ($CountrySearch = Null) {
 	
 	return Response::json($response);
 });
+
+Route::get('getListCity/{CountryCode}/{CitySearch?}', function ($CountryCode,$CitySearch = Null) 
+{   
+
+	$json = json_decode(file_get_contents('http://ronasit.nodejs.website/files/city.list.json'), true);
+
+	$response=[];
+	foreach($json as $key => $search)  {    
+	
+		if ($search['country']== strtoupper($CountryCode)) {
+			if (is_null($CitySearch )) {
+				$response[]=$search; 
+			} else {
+				if ( stripos($search['name'], $CitySearch)   !== false) {
+					$response[]=$search;
+				}
+			}
+		}
+		//$response[]=array('country_code' => $search['alpha2Code'], 'name' => $search['name'], 'country'=> $search['nativeName']);         
+    }
+	 
+	return Response::json($response);
+});
