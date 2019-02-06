@@ -59,6 +59,10 @@ v1.1.1
       @param string $units
  ```
  запрос к API https://api.openweathermap.org/data/2.5/weather?id=1496153&appid=a4cfee3044d5428481b8297bc76d67f2&lang=RU&units=metric
+ 
+ Запрос текущей погоды по IdCity  http://ronasit.nodejs.website/getCurrentWeatherCity/1496153/
+ Запрос текущей погоды по IdCity c учточнением метрики  http://ronasit.nodejs.website/getCurrentWeatherCity/1496153/imperial/
+ 
  //Расписать ответ
   Имеет ли смысл менять время расвета с unix формата на стандарный вариант 24 часа ? 
  
