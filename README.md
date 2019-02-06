@@ -33,6 +33,12 @@ v1.1.1
  ```   
 из JSON файла получить список городов, по стране
 из JSON файла получить список городов, по стране и первым буквам
+было бы не плохо переделать на внешний микросервис
+
+Запрос городов по  стране http://ronasit.nodejs.website/getListCity/Ru/
+
+Запросы с поиском http://ronasit.nodejs.website/getListCity/Ru/Oms
+
 
 ##### Response JSON
     ```
@@ -54,15 +60,7 @@ v1.1.1
  ```
  запрос к API https://api.openweathermap.org/data/2.5/weather?id=1496153&appid=a4cfee3044d5428481b8297bc76d67f2&lang=RU&units=metric
  //Расписать ответ
- 
- #### getHistorytWeatherCity (Историю погоды на конретную дату и время)
-  ``` 
-      @param Int $IdCity      
-      @param date $date
-      @param time $time
-      @param string $units
- ```  
- 
+  
  
  #### getCurrentWeatherGeoCoor (Получить информацию о текущей погоде, входящий параметр Долгота , Широта,ТипТемпературы)
  ``` 
@@ -75,12 +73,23 @@ v1.1.1
 Определения местоположения - отдельным сервисом(?) 
  
  Для данного mockup-a это избыточный функционал(не реализуем?):
+ 
  #### getForecastWeatherCity (Прогноз на N дней вперед)
   ``` 
       @param Int $IdCity      
       @param Int $CountDay
       @param string $units
  ```  
+ 
+ 
+ #### getHistorytWeatherCity (Историю погоды на конретную дату и время)
+  ``` 
+      @param Int $IdCity      
+      @param date $date
+      @param time $time
+      @param string $units
+ ```  
+ 
 Расписать ответы в соотвествии с mockup иконки и т.п.
 
 Так же может лучше передавать координты, город и тип температуры(&units=imperial/metric), язык ответа(&lang=RU/US) запросов для настройки будущих ответов этому пользователю.(?)
