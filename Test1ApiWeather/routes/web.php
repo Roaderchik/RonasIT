@@ -41,7 +41,11 @@ Route::get('getListCountry/{CountrySearch?}', function ($CountrySearch = Null) {
 Route::get('getListCity/{CountryCode}/{CitySearch?}', function ($CountryCode,$CitySearch = Null) 
 {   
 //вот это вообще конечно жесть, в идеале передеалать на отдельный микросервис и получать оттуда уже фильтрованные данные
-	$json = json_decode(file_get_contents('http://ronasit.nodejs.website/files/city.list.json'), true);
+
+$path = storage_path() . "/files/city.list.json"; 
+$json = json_decode(file_get_contents($path), true); 
+
+
 
 	$response=[];
 	foreach($json as $key => $search)  {    
@@ -72,3 +76,14 @@ $appid='a4cfee3044d5428481b8297bc76d67f2';
 	
 })->where(['IdCity' => '[0-9]+']);
 
+
+
+Route::get('getCurrentWeatherGeoCoor/{Lat}/{Lon}/{Units?}', function ($Lon,$Lat,$Units = 'metric') 
+{   
+//appid переделать на получение из конфига
+$appid='a4cfee3044d5428481b8297bc76d67f2';
+
+	$json = json_decode(file_get_contents('https://api.openweathermap.org/data/2.5/weather?lat='.$Lat.'&lon='.$Lon.'&appid='.$appid.'&lang=RU&units='.$Units), true);
+	return $json;
+	
+});
