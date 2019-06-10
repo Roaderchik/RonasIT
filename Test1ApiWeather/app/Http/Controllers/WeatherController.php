@@ -12,7 +12,7 @@ class WeatherController extends Controller
 {
     public function getCurrentWeatherCity($cityId,Request $request)
     {
-        //TODO Вынести этот кусок валидации в общую часть
+        //TODO Вынести этот кусок валидации в общую часть https://laravel.com/docs/5.8/validation вынести в form validate
        //Осуществляем проверку-валидацию параметра units 
         $validatedData=Validator::make( $request->all(),[
             'units' => [

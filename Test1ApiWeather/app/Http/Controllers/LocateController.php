@@ -20,11 +20,9 @@ class LocateController extends Controller
     }
 
     //Общий список городов по Коду страны
-    public function getListCities($countryCode, Request $request)   {                
-       
+    public function getListCities($countryCode, Request $request)   {                     
     
-        $name   = $request->input('name');    
-       
+        $name   = $request->input('name');           
         $response=LocateClient::getListCities($countryCode,$name);
 
         $headers = ['Content-type'=> 'application/json; charset=utf-8'];
