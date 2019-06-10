@@ -2,11 +2,13 @@
 ![Image of mockup](https://resume.nodejs.website/UP.jpg)
 
 Написать App API к сервису погоды основываясь на https://openweathermap.org/api
+
 Обращаться будем к русской версии с параметром lang=RU 
 
 REST API c запросами:
 
-#### countries (Список стран, параметр @name - поиск по вхождению (латиница\кириллица))
+#### countries 
+Список стран, параметр @name - поиск по вхождению (латиница\кириллица)
  ```    
     * @param string $name
  ```   
@@ -15,8 +17,11 @@ REST API c запросами:
 #### Пример запроса
 
 Запрос на все страна /countries
+
 Запросы с поиском латиницей  /countries?name=Russian
+
 Запросы с поиском кириллицей /countries?name=Россия
+
 
 ##### Пример ответа
     ```
@@ -27,15 +32,22 @@ REST API c запросами:
     }
     ```
 
-#### /countries/:countryCode/cities (Список городов-локаций,  параметр в URL countryCode - код Страны, параметр name поиск по началу названия города-локации (латиница\кириллица))
+#### /countries/:countryCode/cities 
+
+Список городов-локаций,  параметр в URL countryCode - код Страны, параметр name поиск по началу названия города-локации (латиница\кириллица)
+
  ``` 
     @param string $countryCode
     * @param string $name
  ```   
 #### Пример запроса
+
 Запрос всех городов-локаций по  стране /countries/RU/cities
+
 Запросы с поиском латиницей   /countries/RU/cities?name=Omsk
+
 Запросы с поиском кириллицей  /countries/RU/cities?name=Омск
+
 
 ##### Пример ответа
     ```
@@ -51,7 +63,8 @@ REST API c запросами:
     }
     ```
     
-#### /weather/city/:сityId (Получить информацию о текущей погоде в городе-локации, параметр в URL сityId идентификатор города-локации ,параметр  units измерения температуры)
+#### /weather/city/:сityId
+Получить информацию о текущей погоде в городе-локации, параметр в URL сityId идентификатор города-локации ,параметр  units измерения температуры
  ``` 
       @param Int $сityId
       @param string $units
@@ -68,7 +81,8 @@ REST API c запросами:
      https://github.com/Roaderchik/RonasIT/blob/master/responseopenweathermap.md
    ```
    
- #### /weather/geo/:lat/:lot (Получить информацию о текущей погоде,параметр в URL lat- Долгота ,lot- Широта ,параметр  units измерения температуры)
+ #### /weather/geo/:lat/:lot 
+ Получить информацию о текущей погоде,параметр в URL lat- Долгота ,lot- Широта ,параметр  units измерения температуры
  ```  
       @param float $Lat
       @param float $Lon    
@@ -79,6 +93,6 @@ REST API c запросами:
 Запрос текущей погоды по ГеоКоординатам c форматом температуры  /weather/geo/55/73.400002?units=metric
 
  ##### Пример ответа
-  ```
-     https://github.com/Roaderchik/RonasIT/blob/master/responseopenweathermap.md
-   ```
+ 
+     [Пример ответа Оpenweathermap ](https://github.com/Roaderchik/RonasIT/blob/master/responseopenweathermap.md "Пример ответа Оpenweathermap")
+  
