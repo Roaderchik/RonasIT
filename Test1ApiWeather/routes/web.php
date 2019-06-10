@@ -11,34 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('countries', 'LocateContoroller@getListCountries')->name('locate.countries');
+Route::get('countries/{countryCode}/cities', 'LocateContoroller@getListCities')->name('locate.cities')->where(['countryCode' => '[A-Z]+']);;
 
-Route::get('getListCountry/{CountrySearch?}', function ($CountrySearch = Null) {
-    //return 'CountrySearch '.$CountrySearch;
-	
-	//Если не использовать пакеты типа LaraCurl, Guzzle и т.п. 
-	
-	
-	if (is_null($CountrySearch )) {
-		//Если нет уточняющих данных передаем все старны
-		$json = json_decode(file_get_contents('https://restcountries.eu/rest/v2/all'), true);
-	} else {
-		//Передаюм только содержащие буквы 
-		$json = json_decode(file_get_contents('https://restcountries.eu/rest/v2/name/'.$CountrySearch), true);
-	}
-	
-	//Очищаем от лишних данных
-	$response=[];
-	foreach($json as $key => $search)  {      				
-		$response[]=array('country_code' => $search['alpha2Code'], 'name' => $search['name'], 'name_local'=> $search['nativeName']);         
-	} 
-	 	
-	$headers = ['Content-type'=> 'application/json; charset=utf-8'];
-    return Response::json($response, 200, $headers, JSON_UNESCAPED_UNICODE);
-	
-});
+
+
 
 Route::get('getListCity/{CountryCode}/{CitySearch?}', function ($CountryCode,$CitySearch = Null) 
 {  
@@ -73,12 +50,3 @@ Route::get('weather/city/{cityId}/', 'WeatherContoroller@getCurrentWeatherCity')
 
 Route::get('weather/geo/{lat}/{lon}/', 'WeatherContoroller@getCurrentWeatherGeoCoor')->name('weather.geocoor')->where(['lat' => '[0-9,.]+','lon' => '[0-9,.]+']);
 
-Route::get('getCurrentWeatherGeoCoor/{Lat}/{Lon}/{Units?}', function ($Lon,$Lat,$Units = 'metric') 
-{   
-//appid переделать на получение из конфига
-$appid='a4cfee3044d5428481b8297bc76d67f2';
-
-	$json = json_decode(file_get_contents('https://api.openweathermap.org/data/2.5/weather?lat='.$Lat.'&lon='.$Lon.'&appid='.$appid.'&lang=RU&units='.$Units), true);
-	return $json;
-	
-});
