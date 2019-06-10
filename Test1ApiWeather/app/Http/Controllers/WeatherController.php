@@ -32,8 +32,8 @@ class WeatherController extends Controller
         //Запрашиваем погоду у Фасада        
         $weather=OpenWeatherClient::getCurrentWeatherCity($cityId,$units); 
         
-        //форсмируем заголовок и возвращаем json  
-           //TODO Поискать более элегантное решение
+        //формируем заголовок и возвращаем json  
+         //TODO Поискать более элегантное решение
         $headers = ['Content-type'=> 'application/json; charset=utf-8'];
         return Response::json($weather, 200, $headers, JSON_UNESCAPED_UNICODE);        
     }
