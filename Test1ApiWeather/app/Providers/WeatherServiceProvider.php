@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-use App\DataTransferOpenWeather;
+use App\OpenWeatherClient;
 
 class WeatherServiceProvider extends ServiceProvider
 {
@@ -15,8 +15,8 @@ class WeatherServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind('DataTransferOpenWeather', function () {
-            return new DataTransferOpenWeather;
+        $this->app->bind('OpenWeatherClient', function () {
+            return new OpenWeatherClient;
         });
     }
 

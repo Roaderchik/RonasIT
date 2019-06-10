@@ -11,11 +11,15 @@
 |
 */
 
-Route::get('countries', 'LocateContoroller@getListCountries')->name('locate.countries');
-Route::get('countries/{countryCode}/cities', 'LocateContoroller@getListCities')->name('locate.cities')->where(['countryCode' => '[A-Z]+']);;
+//Общий список стран, можно передавать параметр name (Латиницой или кирилицей) для поиска по имени(любое вхождение). 
+Route::get('countries', 'LocateController@getListCountries')->name('locate.countries');
 
+//Общий список городов по коду страны, можно передавать параметр name (Латиницой или кирилицей) для поиска по имени( начало вхождения). 
+Route::get('countries/{countryCode}/cities', 'LocateController@getListCities')->name('locate.cities')->where(['countryCode' => '[A-Z]+']);;
 
-Route::get('weather/city/{cityId}/', 'WeatherContoroller@getCurrentWeatherCity')->name('weather.city')->where(['cityId' => '[0-9]+']);
+//Получаем погоду по ИД города, можно передавать параметр unit либо 'metric', 'imperial'
+Route::get('weather/city/{cityId}/', 'WeatherController@getCurrentWeatherCity')->name('weather.city')->where(['cityId' => '[0-9]+']);
 
-Route::get('weather/geo/{lat}/{lon}/', 'WeatherContoroller@getCurrentWeatherGeoCoor')->name('weather.geocoor')->where(['lat' => '[0-9,.]+','lon' => '[0-9,.]+']);
+//Получаем погоду по координатам, можно передавать параметр unit либо 'metric', 'imperial'
+Route::get('weather/geo/{lat}/{lon}/', 'WeatherController@getCurrentWeatherGeoCoor')->name('weather.geocoor')->where(['lat' => '[0-9,.]+','lon' => '[0-9,.]+']);
 
