@@ -94,5 +94,5 @@ REST API c запросами:
 
  ##### Пример ответа
  
-     [Пример ответа Оpenweathermap ](https://github.com/Roaderchik/RonasIT/blob/master/responseopenweathermap.md "Пример ответа Оpenweathermap")
-  
+ [Пример ответа Оpenweathermap](https://github.com/Roaderchik/RonasIT/blob/master/responseopenweathermap.md "Пример ответа Оpenweathermap")
+ 
