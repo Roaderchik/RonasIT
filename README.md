@@ -7,7 +7,7 @@
 
 REST API c запросами:
 
-#### countries 
+### countries 
 Список стран, параметр @name - поиск по вхождению (латиница\кириллица)
  ```    
     * @param string $name
@@ -23,7 +23,7 @@ REST API c запросами:
 Запросы с поиском кириллицей /countries?name=Россия
 
 
-##### Пример ответа
+#### Пример ответа
     ```
      {
         "country_code": "RU",
@@ -32,7 +32,7 @@ REST API c запросами:
     }
     ```
 
-#### /countries/:countryCode/cities 
+### /countries/:countryCode/cities 
 
 Список городов-локаций,  параметр в URL countryCode - код Страны, параметр name поиск по началу названия города-локации (латиница\кириллица)
 
@@ -63,7 +63,7 @@ REST API c запросами:
     }
     ```
     
-#### /weather/city/:сityId
+### /weather/city/:сityId
 Получить информацию о текущей погоде в городе-локации, параметр в URL сityId идентификатор города-локации ,параметр  units измерения температуры
  ``` 
       @param Int $сityId
@@ -81,7 +81,7 @@ REST API c запросами:
      https://github.com/Roaderchik/RonasIT/blob/master/responseopenweathermap.md
    ```
    
- #### /weather/geo/:lat/:lot 
+ ### /weather/geo/:lat/:lot 
  Получить информацию о текущей погоде,параметр в URL lat- Долгота ,lot- Широта ,параметр  units измерения температуры
  ```  
       @param float $Lat
