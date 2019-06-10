@@ -1,5 +1,5 @@
 <?php
-
+	
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,13 +33,15 @@ Route::get('getListCountry/{CountrySearch?}', function ($CountrySearch = Null) {
 	$response=[];
 	foreach($json as $key => $search)  {      				
 		$response[]=array('country_code' => $search['alpha2Code'], 'name' => $search['name'], 'name_local'=> $search['nativeName']);         
-    }  	
+	} 
+	 	
+	$headers = ['Content-type'=> 'application/json; charset=utf-8'];
+    return Response::json($response, 200, $headers, JSON_UNESCAPED_UNICODE);
 	
-	return Response::json($response);
 });
 
 Route::get('getListCity/{CountryCode}/{CitySearch?}', function ($CountryCode,$CitySearch = Null) 
-{   
+{  
 //вот это вообще конечно жесть, в идеале передеалать на отдельный микросервис и получать оттуда уже фильтрованные данные
 
 $path = storage_path() . "/files/city.list.json"; 
@@ -65,18 +67,11 @@ $json = json_decode(file_get_contents($path), true);
 });
 
 
-Route::get('getCurrentWeatherCity/{IdCity}/{Units?}', function ($IdCity,$Units = 'metric') 
-{   
-//getCurrentWeatherCity/1496153/
-//appid переделать на получение из конфига
-$appid='a4cfee3044d5428481b8297bc76d67f2';
-
-	$json = json_decode(file_get_contents('https://api.openweathermap.org/data/2.5/weather?id='.$IdCity.'&appid='.$appid.'&lang=RU&units='.$Units), true);
-	return $json;
-	
-})->where(['IdCity' => '[0-9]+']);
 
 
+Route::get('weather/city/{cityId}/', 'WeatherContoroller@getCurrentWeatherCity')->name('weather.city')->where(['cityId' => '[0-9]+']);
+
+Route::get('weather/geo/{lat}/{lon}/', 'WeatherContoroller@getCurrentWeatherGeoCoor')->name('weather.geocoor')->where(['lat' => '[0-9,.]+','lon' => '[0-9,.]+']);
 
 Route::get('getCurrentWeatherGeoCoor/{Lat}/{Lon}/{Units?}', function ($Lon,$Lat,$Units = 'metric') 
 {   
